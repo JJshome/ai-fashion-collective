@@ -1,0 +1,35 @@
+{
+  "name": "ai-fashion-collective",
+  "version": "1.0.0",
+  "description": "인공지능을 이용한 패션플랫폼 - 사용자 참여형 집단 창작 시스템",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "build": "cd frontend && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJshome/ai-fashion-collective.git"
+  },
+  "keywords": [
+    "AI",
+    "fashion",
+    "collective-design",
+    "machine-learning",
+    "blockchain",
+    "NFT"
+  ],
+  "author": "장지환",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/JJshome/ai-fashion-collective/issues"
+  },
+  "homepage": "https://github.com/JJshome/ai-fashion-collective#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
