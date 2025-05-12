@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff7f0" />
+      <stop offset="100%" stop-color="#ffefef" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="3" stdDeviation="4" flood-opacity="0.3" />
+    </filter>
+    <style>
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      @keyframes slide {
+        0% { transform: translateX(0px); }
+        50% { transform: translateX(15px); }
+        100% { transform: translateX(0px); }
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      @keyframes rotateColors {
+        0% { stroke: #ff6b6b; }
+        33% { stroke: #4cc9f0; }
+        66% { stroke: #06d6a0; }
+        100% { stroke: #ff6b6b; }
+      }
+      @keyframes dash {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      .float {
+        animation: float 4s ease-in-out infinite;
+      }
+      .slide {
+        animation: slide 4s ease-in-out infinite;
+      }
+      .pulse {
+        animation: pulse 3s ease-in-out infinite;
+      }
+      .colorChange {
+        animation: rotateColors 6s linear infinite;
+      }
+      .draw {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: dash 3s ease-in-out forwards;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg-gradient)" rx="15" ry="15" />
+  
+  <!-- Title -->
+  <text x="400" y="60" font-family="Arial" font-size="32" font-weight="bold" text-anchor="middle" fill="#e63946">Evaluation Input Component</text>
+  <text x="400" y="90" font-family="Arial" font-size="18" text-anchor="middle" fill="#457b9d">평가 입력부</text>
+  
+  <!-- Main Workspace Area -->
+  <rect x="150" y="120" width="500" height="300" rx="10" ry="10" fill="#f8f9fa" stroke="#e63946" stroke-width="3" filter="url(#shadow)" />
+  
+  <!-- Original Clothing Design -->
+  <g class="float">
+    <rect x="180" y="150" width="200" height="240" rx="5" ry="5" fill="#f1faee" stroke="#457b9d" stroke-width="2" />
+    <text x="280" y="180" font-family="Arial" font-size="16" text-anchor="middle" fill="#1d3557">Original Design</text>
+    
+    <!-- Clothing Illustration -->
+    <path d="M280,210 C300,210 310,220 310,240 C310,270 300,290 280,290 C260,290 250,270 250,240 C250,220 260,210 280,210 Z" fill="#a8dadc" stroke="#1d3557" stroke-width="2" />
+    <path d="M280,290 L280,340" stroke="#1d3557" stroke-width="2" />
+    <path d="M280,340 L260,360 M280,340 L300,360" stroke="#1d3557" stroke-width="2" />
+  </g>
+  
+  <!-- Modified Clothing Design -->
+  <g class="float" style="animation-delay: 0.5s">
+    <rect x="420" y="150" width="200" height="240" rx="5" ry="5" fill="#f1faee" stroke="#457b9d" stroke-width="2" />
+    <text x="520" y="180" font-family="Arial" font-size="16" text-anchor="middle" fill="#1d3557">Modified Design</text>
+    
+    <!-- Modified Clothing Illustration -->
+    <path d="M520,210 C540,210 550,220 550,240 C550,270 540,290 520,290 C500,290 490,270 490,240 C490,220 500,210 520,210 Z" fill="#ffafcc" stroke="#e63946" stroke-width="2" class="colorChange" />
+    <path d="M520,290 L520,340" stroke="#e63946" stroke-width="2" class="colorChange" />
+    <path d="M520,340 L500,360 M520,340 L540,360" stroke="#e63946" stroke-width="2" class="colorChange" />
+    
+    <!-- Decoration Elements -->
+    <path d="M520,230 C530,235 530,245 520,250 C510,245 510,235 520,230 Z" fill="#ffccd5" stroke="#e63946" stroke-width="1" class="pulse" />
+    <circle cx="510" cy="260" r="5" fill="#ffccd5" stroke="#e63946" stroke-width="1" class="pulse" />
+    <circle cx="530" cy="260" r="5" fill="#ffccd5" stroke="#e63946" stroke-width="1" class="pulse" />
+  </g>
+  
+  <!-- Modification Tools -->
+  <g class="draw">
+    <rect x="170" y="400" width="460" height="50" rx="8" ry="8" fill="#f1faee" stroke="#457b9d" stroke-width="2" />
+    
+    <!-- Tool Icons -->
+    <circle cx="210" cy="425" r="15" fill="#e63946" />
+    <text x="210" y="430" font-family="Arial" font-size="16" text-anchor="middle" fill="white">1</text>
+    
+    <circle cx="260" cy="425" r="15" fill="#e63946" />
+    <text x="260" y="430" font-family="Arial" font-size="16" text-anchor="middle" fill="white">2</text>
+    
+    <circle cx="310" cy="425" r="15" fill="#e63946" />
+    <text x="310" y="430" font-family="Arial" font-size="16" text-anchor="middle" fill="white">3</text>
+    
+    <circle cx="360" cy="425" r="15" fill="#e63946" />
+    <text x="360" y="430" font-family="Arial" font-size="16" text-anchor="middle" fill="white">4</text>
+    
+    <circle cx="410" cy="425" r="15" fill="#e63946" />
+    <text x="410" y="430" font-family="Arial" font-size="16" text-anchor="middle" fill="white">5</text>
+    
+    <rect x="460" y="410" width="150" height="30" rx="15" ry="15" fill="#e63946" class="pulse" />
+    <text x="535" y="430" font-family="Arial" font-size="16" text-anchor="middle" fill="white">Apply Changes</text>
+  </g>
+  
+  <!-- User Avatars (Top) -->
+  <g class="slide">
+    <circle cx="100" cy="150" r="20" fill="#8ecae6" stroke="#023047" stroke-width="2" />
+    <text x="100" y="155" font-family="Arial" font-size="16" text-anchor="middle" fill="white">U</text>
+    
+    <circle cx="100" cy="200" r="20" fill="#8ecae6" stroke="#023047" stroke-width="2" />
+    <text x="100" y="205" font-family="Arial" font-size="16" text-anchor="middle" fill="white">U</text>
+    
+    <circle cx="100" cy="250" r="20" fill="#8ecae6" stroke="#023047" stroke-width="2" />
+    <text x="100" y="255" font-family="Arial" font-size="16" text-anchor="middle" fill="white">U</text>
+    
+    <!-- Connection Lines to Main Area -->
+    <path d="M120,150 C135,150 135,170 150,170 M120,200 C135,200 135,220 150,220 M120,250 C135,250 135,270 150,270" stroke="#457b9d" stroke-width="2" stroke-dasharray="5,3" />
+  </g>
+  
+  <!-- NFT Block -->
+  <g class="pulse">
+    <rect x="60" cy="300" width="80" height="80" rx="10" ry="10" fill="#a8dadc" stroke="#023047" stroke-width="2" />
+    <text x="100" y="340" font-family="Arial" font-size="16" text-anchor="middle" fill="#023047">NFT</text>
+    <text x="100" y="360" font-family="Arial" font-size="10" text-anchor="middle" fill="#023047">Blockchain</text>
+    
+    <!-- Connection to Main Area -->
+    <path d="M140,340 C145,340 145,340 150,340" stroke="#023047" stroke-width="2" stroke-dasharray="5,3" />
+  </g>
+  
+  <!-- Legend -->
+  <g>
+    <text x="210" y="475" font-family="Arial" font-size="12" text-anchor="middle" fill="#1d3557">1: Object Detection</text>
+    <text x="310" y="475" font-family="Arial" font-size="12" text-anchor="middle" fill="#1d3557">2: Transformation</text>
+    <text x="410" y="475" font-family="Arial" font-size="12" text-anchor="middle" fill="#1d3557">3: Rendering</text>
+    <text x="510" y="475" font-family="Arial" font-size="12" text-anchor="middle" fill="#1d3557">4: Model Application</text>
+    <text x="610" y="475" font-family="Arial" font-size="12" text-anchor="middle" fill="#1d3557">5: Pattern Extraction</text>
+  </g>
+</svg>
