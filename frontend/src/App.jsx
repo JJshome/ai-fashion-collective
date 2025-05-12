@@ -1,48 +1,56 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Container } from '@mui/material';
-
-// Pages
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import DesignStudioPage from './pages/DesignStudioPage';
-import DesignEvaluationPage from './pages/DesignEvaluationPage';
-import DashboardPage from './pages/DashboardPage';
-import ProfilePage from './pages/ProfilePage';
+import { AuthProvider } from './context/AuthContext';
+import { DesignProvider } from './context/DesignContext';
+import { NotificationProvider } from './context/NotificationContext';
 
 // Components
-import Header from './components/layout/Header';
+import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import ProtectedRoute from './components/auth/ProtectedRoute';
+import PrivateRoute from './components/routing/PrivateRoute';
+import AdminRoute from './components/routing/AdminRoute';
 
-// Contexts
-import { AuthProvider } from './contexts/AuthContext';
-import { DesignProvider } from './contexts/DesignContext';
-import { NotificationProvider } from './contexts/NotificationContext';
+// Pages
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import DesignDetail from './pages/DesignDetail';
+import CreateDesign from './pages/CreateDesign';
+import EditDesign from './pages/EditDesign';
+import Profile from './pages/Profile';
+import UserProfile from './pages/UserProfile';
+import Dashboard from './pages/Dashboard';
+import AdminDashboard from './pages/AdminDashboard';
+import EvaluationPage from './pages/EvaluationPage';
+import NotFound from './pages/NotFound';
+import AiGenerator from './pages/AiGenerator';
 
 // Create theme
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2',
+      main: '#3a0ca3',
     },
     secondary: {
-      main: '#f50057',
+      main: '#f72585',
     },
     background: {
-      default: '#f5f5f5',
+      default: '#f8f9fa',
     },
   },
   typography: {
-    fontFamily: [
-      'Noto Sans KR',
-      'Roboto',
-      'Arial',
-      'sans-serif',
-    ].join(','),
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    h1: {
+      fontWeight: 700,
+    },
+    h2: {
+      fontWeight: 600,
+    },
+    h3: {
+      fontWeight: 600,
+    },
   },
 });
 
@@ -54,46 +62,29 @@ function App() {
         <DesignProvider>
           <NotificationProvider>
             <Router>
-              <Header />
-              <Container maxWidth="lg" sx={{ mt: 4, mb: 4, minHeight: 'calc(100vh - 200px)' }}>
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/register" element={<RegisterPage />} />
-                  <Route 
-                    path="/design-studio" 
-                    element={
-                      <ProtectedRoute>
-                        <DesignStudioPage />
-                      </ProtectedRoute>
-                    } 
-                  />
-                  <Route 
-                    path="/design-evaluation" 
-                    element={
-                      <ProtectedRoute>
-                        <DesignEvaluationPage />
-                      </ProtectedRoute>
-                    } 
-                  />
-                  <Route 
-                    path="/dashboard" 
-                    element={
-                      <ProtectedRoute>
-                        <DashboardPage />
-                      </ProtectedRoute>
-                    } 
-                  />
-                  <Route 
-                    path="/profile" 
-                    element={
-                      <ProtectedRoute>
-                        <ProfilePage />
-                      </ProtectedRoute>
-                    } 
-                  />
-                </Routes>
-              </Container>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/designs/:id" element={<DesignDetail />} />
+                <Route path="/users/:id" element={<UserProfile />} />
+                
+                <Route element={<PrivateRoute />}>
+                  <Route path="/designs/create" element={<CreateDesign />} />
+                  <Route path="/designs/edit/:id" element={<EditDesign />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/evaluation/:id" element={<EvaluationPage />} />
+                  <Route path="/ai-generator" element={<AiGenerator />} />
+                </Route>
+                
+                <Route element={<AdminRoute />}>
+                  <Route path="/admin" element={<AdminDashboard />} />
+                </Route>
+                
+                <Route path="*" element={<NotFound />} />
+              </Routes>
               <Footer />
             </Router>
           </NotificationProvider>
